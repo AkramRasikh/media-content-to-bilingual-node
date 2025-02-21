@@ -1,10 +1,6 @@
 import admin from 'firebase-admin';
 import config from '../config';
 
-admin.initializeApp({
-  credential: admin.credential.cert(JSON.parse(config.googleServiceAccount)),
-  databaseURL: config.firebaseDBUrl,
-});
 const bucketName = config.firebaseBucketName;
 
 const uploadBufferToFirebase = async ({
