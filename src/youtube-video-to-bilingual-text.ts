@@ -168,13 +168,14 @@ const cutAudioIntoIntervals = async ({
   hasVideo,
   startSeconds,
 }) => {
+  const excessInCaseAudioIsCutTooSoon = 2;
   for (const item of updateToAndFromValues) {
     const audioPath = outputFile(item.title);
     await extractAudioFromBaseAudio(
       outputFilePathGrandCut,
       outputFile(item.title),
       item.from,
-      item.to,
+      item.to + excessInCaseAudioIsCutTooSoon,
     );
 
     const fileBuffer = fs.readFileSync(audioPath);
